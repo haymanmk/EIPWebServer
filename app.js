@@ -10,16 +10,16 @@ const cont = cm.addController('172.16.0.10');
 cont.connect();
 
 
-// //addTag(tagname, program = null, arrayDims = 0, arraySize = 0x01)
-// cont.addTag('Output')
+//addTag(tagname, program = null, arrayDims = 0, arraySize = 0x01)
+cont.addTag('Output')
 
-// cont.on('TagChanged', (tag, prevValue) => {
-//   console.log(tag.name, ' changed from ', prevValue, ' => ', tag.value)
-// })
+cont.on('TagChanged', (tag, prevValue) => {
+  console.log(tag.name, ' changed from ', prevValue, ' => ', tag.value)
+})
 
-// cont.on('error', (e) => {
-//   console.log(e)
-// })
+cont.on('error', (e) => {
+  console.log(e)
+})
 
 
 
@@ -49,8 +49,6 @@ cont.connect();
 
 
 // `Uses the same method as RsLinx to detect if device is on the network`
-
-
 // const { Browser } = require("st-ethernet-ip");
 
 // const browser = new Browser(originatorPort=2222, originatorIPaddress='172.16.0.24');
