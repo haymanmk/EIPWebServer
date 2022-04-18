@@ -1,0 +1,505 @@
+$ EZ-EDS Version 3.25.1.20181218 Generated Electronic Data Sheet
+
+$ EtherNet/IP Electronic Data Sheet
+$ Support for the WAGO I/O system
+$ First time created: 15.10.2009
+$  
+$ You will get additional  information from
+$  
+$ WAGO Kontakttechnik GmbH
+$ Hansastr. 27
+$ 32423 Minden
+$ Germany
+$ Tel. ++49(0)571-887-555
+$ Fax. ++49(0)571-887-8555
+$ Email support@wago.com
+$  
+$ WAGO Corporation
+$ N120 W19129 Freistadt Road
+$ Germantown, WI 53022
+$ USA
+$ Tel. (262)255-6222
+$ Fax. (262)255-3232
+$  
+$ WAGO Limited
+$ Unit 9
+$ Triton Park
+$ Swift Valley Industrial Estate
+$ RUGBY
+$ Warwickshire
+$ CV21 1SG
+$ Great Britain
+$ Tel. (01788)568008
+$ Fax. (01788)568050
+$  
+
+$ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[File]
+
+    $ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        DescText = "EDS file for device WAGO 750-366 EtherNet/IP";
+        CreateDate = 03-23-2020;
+        CreateTime = 14:53:33;
+        ModDate = 05-13-2020;
+        ModTime = 08:42:32;
+        Revision = 1.3;
+        HomeURL = "https://www.wago.com";
+
+
+$ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[Device]
+
+    $ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        VendCode = 40;                  $ Vendor Code
+        VendName = "WAGO Kontakttechnik GmbH & Co. KG";    $ Vendor Name
+        ProdType = 12;                  $ Product Type - Communication Adapter
+        ProdTypeStr = "Communications Adapter";    $ Product Type String
+        ProdCode = 366;                 $ Product Code
+
+        MajRev = 1;                     $ Major Rev
+        MinRev = 2;                     $ Minor Rev
+
+        ProdName = "WAGO 750-366 EtherNet/IP";
+        Catalog = "750-366";
+        Icon = "07500XXX.ico";
+        IconContents =
+                "AAABAAEAICAQAAEABADoAgAAFgAAACgAAAAgAAAAQAAAAAEABAAAAAAAgAIA"
+                "AAAAAAAAAAAAEAAAAAAAAAD/AAAAMzMzAAAA/wBNTU0AAIAAAGZmZgCAgIAA"
+                "s7OzAAD/AAD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqqqqqqqqqqqq"
+                "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqYzMzMzMzMzM6qqqqqqqqqmmZmZlp"
+                "mZmZOqqqqqqqqqppZmZpaZd3eTMzMzMzqqqqaWqqaWmXd3k2mZaZk6qqqmmq"
+                "qmlpl3d5NpmWmZOqqqppqqppaZd3eTaZlpmTqqqqaWqqaWmXd3k2mZaZk6qq"
+                "d2lmZmlpmZmZNhkWGRN3d3dpmZmZaZmZmTaZlpmTd3dVaWZmaWmZmZk2GRYZ"
+                "E1VVd2lqqmlpmZmZNpmWmZN3d3dpqqppaZlEmTYZFhkTd3d3aaqqaWmZRJk2"
+                "mZaZk3d3d2lqqmlpmZmZNhkWGRN3d3dpZmZpaZmImTaZlpmTd3d3aZmZmWmZ"
+                "iJk2GRYZE3d3VWmZmZlpmZmZNpmWmZNVVXdpIiIpaZlEmTYZFhkTd3d3aSZp"
+                "KWmZRJk2mZaZk3d3qmkiIilpmZmZNhkWGROqqqppKWYpaZmImTaZlpmTqqqq"
+                "aSIiKWmZiJk2mZaZk6qqqmkmaSlpmZmZNpmWmZOqqqppIiIpaZmImTaJhomD"
+                "qqqqaSZpKWmZiJk2iYaJg6qqqmkiIilpmZmZNiImAAOqqqppKWYpaZmImTYi"
+                "JgADqqqqaSIiKWmZiJk2ZmZmY6qqqmmZmZlpmZmZOqqqqqqqqqpmZmZmZmZm"
+                "Zmqqqqqqqqr//////////8AAH//AAB//wAAAD8AAAA/AAAAPwAAAD8AAAA8A"
+                "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                "AADAAAAPwAAAD8AAAA/AAAAPwAAAD8AAAA/AAAAPwAAAD8AAAA/AAB//wAAf"
+                "/w==";
+
+
+
+
+$ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[Device Classification]
+
+    $ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        Class1 = EtherNetIP;
+
+$ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[Params]
+        Param1 =
+                0,
+                6,"20 64 24 01 30 07",
+                0x0010,                 $ read only
+                0xC7,
+                2,
+                "Analog Output Data Length",
+                "bit",
+                "The bit length of all analog outputs",
+                0,0xFFFF,0,
+                ,,,,
+                ,,,,
+                0;
+        Param2 =
+                0,
+                6,"20 64 24 01 30 08",
+                0x0010,                 $ read only
+                0xC7,
+                2,
+                "Analog Input Data Length",
+                "bit",
+                "The bit length of all analog inputs",
+                0,0xFFFF,0,
+                ,,,,
+                ,,,,
+                0;
+        Param3 =
+                0,
+                6,"20 64 24 01 30 09",
+                0x0010,                 $ read only
+                0xC7,
+                2,
+                "Digital Output Data Length",
+                "bit",
+                "The bit length of all digital outputs",
+                0,0xFFFF,0,
+                ,,,,
+                ,,,,
+                0;
+        Param4 =
+                0,
+                6,"20 64 24 01 30 0A",
+                0x0010,                 $ read only
+                0xC7,
+                2,
+                "Digital Input Data Length",
+                "bit",
+                "The bit length of all digital inputs",
+                0,0xFFFF,0,
+                ,,,,
+                ,,,,
+                0;
+        Param5 =
+                0,                      $ reserved, shall equal 0
+                6,"20 64 24 01 30 05",  $ Link Path Size, Link Path
+                0x0010,                 $ Descriptor
+                0xC6,                   $ Data Type
+                1,                      $ Data Size in bytes
+                "Controller Status",    $ name
+                "",                     $ units
+                "The Controller Status",$ help string
+                0,255,0,                $ min, max, default data values
+                ,,,,                    $ mult, div, base, offset scaling
+                ,,,,                    $ mult, div, base, offset links
+                0;                      $ decimal places
+        Param6 =
+                0,                      $ reserved, shall equal 0
+                6,"20 64 24 01 30 06",  $ Link Path Size, Link Path
+                0x0010,                 $ Descriptor
+                0xC7,                   $ Data Type
+                2,                      $ Data Size in bytes
+                "Modulediagnostic",     $ name
+                "",                     $ units
+                "",                     $ help string
+                0,65535,0,              $ min, max, default data values
+                ,,,,                    $ mult, div, base, offset scaling
+                ,,,,                    $ mult, div, base, offset links
+                0;                      $ decimal places
+        Param11 =
+                0,
+                6,"20 64 24 01 30 0B",
+                0x0100,                 $ Supports enum, non-consecutive enums, allows both - enum and vars
+                0xC6,
+                1,
+                "Failure reaction",
+                "",
+                "This is the failure reaction",
+                1,2,1,
+                ,,,,
+                ,,,,
+                0;
+
+        Enum11 =
+                1,"Switch outputs to 0",
+                2,"Do nothing";
+        Param45 =
+                0,
+                6,"20 64 24 01 30 2D",
+                0x0130,                 $ Supports enum, read only, monitor, allows both - enum and vars
+                0xC7,
+                2,
+                "I/O LED Error code",
+                "",
+                "I/O LED Error code",
+                0,65535,0,
+                ,,,,
+                ,,,,
+                0;
+
+        Enum45 =
+                0,"NO_ERROR",
+                1,"CNF_ERROR_CODE",
+                2,"ADD_CNF_ERROR",
+                3,"DIAG_CMD_ERR",
+                4,"DIAG_DATA_ERR",
+                5,"DIAG_REG_ERR",
+                6,"FIELDBUS_ERR",
+                7,"INVALID_TERMINAL",
+                8,"WRONG_CONF_PARAM",
+                9,"CPU_TRAP_ERROR";
+        Param46 =
+                0,
+                6,"20 64 24 01 30 2E",
+                0x0030,                 $ read only, monitor
+                0xC7,
+                2,
+                "I/O LED Error argument",
+                "",
+                "I/O LED Error argument",
+                0,65535,0,
+                ,,,,
+                ,,,,
+                0;
+        Param47 =
+                0,                      $ reserved, shall equal 0
+                6,"20 64 24 01 30 2F",  $ Link Path Size, Link Path
+                0x0010,                 $ Descriptor
+                0xC7,                   $ Data Type
+                2,                      $ Data Size in bytes
+                "Diag_Value",           $ name
+                "",                     $ units
+                "This is the Diagnostic-Byte",    $ help string
+                0,65535,0,              $ min, max, default data values
+                ,,,,                    $ mult, div, base, offset scaling
+                ,,,,                    $ mult, div, base, offset links
+                0;                      $ decimal places
+        Param200 =
+                0,                      $ reserved, shall equal 0
+                ,,                      $ Link Path Size, Link Path
+                0x0000,                 $ Descriptor
+                0xC7,                   $ Data Type
+                2,                      $ Data Size in bytes
+                "O->T size",            $ name
+                "Bytes",                $ units
+                "Variable size for consuming",    $ help string
+                0,500,5,                $ min, max, default data values
+                ,,,,                    $ mult, div, base, offset scaling
+                ,,,,                    $ mult, div, base, offset links
+                0;                      $ decimal places
+        Param201 =
+                0,                      $ reserved, shall equal 0
+                ,,                      $ Link Path Size, Link Path
+                0x0000,                 $ Descriptor
+                0xC7,                   $ Data Type
+                2,                      $ Data Size in bytes
+                "T->O size",            $ name
+                "Bytes",                $ units
+                "Variable size for producing",    $ help string
+                0,500,6,                $ min, max, default data values
+                ,,,,                    $ mult, div, base, offset scaling
+                ,,,,                    $ mult, div, base, offset links
+                0;                      $ decimal places
+        Param300 =
+                0,                      $ reserved, shall equal 0
+                ,,                      $ Link Path Size, Link Path
+                0x0000,                 $ Descriptor
+                0xC6,                   $ Data Type
+                1,                      $ Data Size in bytes
+                "Consumed assembly instance selection (O->T)",    $ name
+                "",                     $ units
+                "",                     $ help string
+                101,103,101,            $ min, max, default data values
+                ,,,,                    $ mult, div, base, offset scaling
+                ,,,,                    $ mult, div, base, offset links
+                0;                      $ decimal places
+        Enum300 =
+                101,"AO + DO - analog and digital output data",
+                102,"DO - digital output data",
+                103,"AO - analog output data";
+        Param301 =
+                0,                      $ reserved, shall equal 0
+                ,,                      $ Link Path Size, Link Path
+                0x0000,                 $ Descriptor
+                0xC6,                   $ Data Type
+                1,                      $ Data Size in bytes
+                "Produced assembly instance selection (T->O)",    $ name
+                "",                     $ units
+                "",                     $ help string
+                104,109,104,            $ min, max, default data values
+                ,,,,                    $ mult, div, base, offset scaling
+                ,,,,                    $ mult, div, base, offset links
+                0;                      $ decimal places
+        Enum301 =
+                104,"AI + DI + S - analog and digital input data plus status",
+                105,"DI + S - digital input data plus status",
+                106,"AI + S - analog input data plus status",
+                107,"AI + DI - analog and digital input data",
+                108,"DI - digital input data",
+                109,"AI - analog input data";
+        Param400 =
+                0,                      $ reserved, shall equal 0
+                ,,                      $ Link Path Size, Link Path
+                0x0000,                 $ Descriptor
+                0xC8,                   $ Data Type
+                4,                      $ Data Size in bytes
+                "RPI Value",            $ name
+                "",                     $ units
+                "",                     $ help string
+                2000,3200000,5000,      $ min, max, default data values
+                ,,,,                    $ mult, div, base, offset scaling
+                ,,,,                    $ mult, div, base, offset links
+                ;                       $ decimal places
+        Param500 =
+                0,                      $ reserved, shall equal 0
+                6,"20 F5 24 01 30 02",  $ Link Path Size, Link Path
+                0x0010,                 $ Descriptor
+                0xD3,                   $ Data Type
+                4,                      $ Data Size in bytes
+                "TCP/IP Object Capabilities",    $ name
+                "",                     $ units
+                "",                     $ help string
+                ,,0x00000017,           $ min, max, default data values
+                ,,,,                    $ mult, div, base, offset scaling
+                ,,,,                    $ mult, div, base, offset links
+                ;                       $ decimal places
+
+
+
+$ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[Groups]
+
+    $ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        Group1 =
+                "Data size",
+                4,
+                1,2,3,4;
+        Group2 =
+                "Status and module diagnostic",
+                3,
+                5,6,47;
+        Group3 =
+                "Failure reaction configuration",
+                1,
+                11;
+        Group4 =
+                "LED status",
+                2,
+                45,46;
+        Group5 =
+                "Variable input/output sizes",
+                2,
+                200,201;
+        Group6 =
+                "Variable assembly instances",
+                2,
+                300,301;
+
+
+
+$ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[Assembly]
+
+    $ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        Revision = 2;
+        Object_Name = "Assembly Object";
+        Object_Class_Code = 0x04;
+        Assem3 =
+                "Producing Assembly (Input Data)",
+                ,
+                500,
+                0x0001,
+                ,;
+        Assem4 =
+                "Consuming Assembly (Output Data)",
+                ,
+                500,
+                0x0001,
+                ,;
+
+
+$ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[Connection Manager]
+        Object_Name = "Connection Manager Object";
+        Object_Class_Code = 0x06;
+
+        Connection1 =
+                0x04070002,             $ trigger & transport
+                                        $ class1,
+                                        $ cyclic, change of state, application,
+                                        $ exclusive owner,
+                                        $ server
+                0xFF640405,             $ connection parameter
+                                        $ O->T, T->O fixed size supported
+                                        $ O->T 32-bit run/idle header
+                                        $ O->T Null,PtP, T->O Null,PtP,Multicast
+                                        $ O->T,T->O Low,High Priority
+                Param400,Param200,Assem4,    $ O->T RPI,size,format
+                Param400,Param201,Assem3,    $ T->O RPI,size,format
+                ,,                      $ config part 1 (not used)
+                ,,                      $ config part 2 (not used)
+                "class1 - exclusive owner",    $ connection name
+                "",                     $ help string
+                "20 04 24 01 2C [Param300] 2C [Param301]";    $ referencing the target object
+
+        Connection2 =
+                0x02070002,             $ trigger & transport
+                                        $ class1,
+                                        $ cyclic, change of state, application,
+                                        $ input only,
+                                        $ server
+                0xFF640305,             $ connection parameter
+                                        $ O->T, T->O fixed size supported
+                                        $ O->T 32-bit run/idle header
+                                        $ O->T Null,PtP, T->O Null,PtP,Multicast
+                                        $ O->T,T->O Low,High Priority
+                Param400,0,,            $ O->T RPI,size,format
+                Param400,Param201,Assem3,    $ T->O RPI,size,format
+                ,,                      $ config part 1 (not used)
+                ,,                      $ config part 2 (not used)
+                "class1 - input only",  $ connection name
+                "",                     $ help string
+                "20 04 24 01 2C C6 2C [Param301]";    $ referencing the target object
+
+        Connection3 =
+                0x01070002,             $ trigger & transport
+                                        $ class1,
+                                        $ cyclic, change of state, application,
+                                        $ listen only,
+                                        $ server
+                0xFF240305,             $ connection parameter
+                                        $ O->T, T->O fixed size supported
+                                        $ O->T 32-bit run/idle header
+                                        $ O->T Null,PtP, T->O Null,PtP,Multicast
+                                        $ O->T,T->O Low,High Priority
+                Param400,0,,            $ O->T RPI,size,format
+                Param400,Param201,Assem3,    $ T->O RPI,size,format
+                ,,                      $ config part 1 (not used)
+                ,,                      $ config part 2 (not used)
+                "class1 - listen only", $ connection name
+                "",                     $ help string
+                "20 04 24 01 2C C7 2C [Param301]";    $ referencing the target object
+
+$ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[Capacity]
+
+    $ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        MaxCIPConnections = 10;
+        MaxConsumersPerMcast = 10;
+        TSpec1 = TxRx, 500, 1000;
+
+[DLR Class]
+
+    $ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        Revision = 3;
+        Object_Name = "Device Level Ring Object";
+        Object_Class_Code = 0x47;
+        MaxInst = 1;
+        Number_Of_Static_Instances = 1;
+        Max_Number_Of_Dynamic_Instances = 0;
+        Ring_Supervisor_Capable = No;
+
+[TCP/IP Interface Class]
+
+    $ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        Revision = 4;
+        Object_Name = "TCP/IP Interface Object";
+        Object_Class_Code = 0xF5;
+        MaxInst = 1;
+        Number_Of_Static_Instances = 1;
+        Max_Number_Of_Dynamic_Instances = 0;
+
+[Ethernet Link Class]
+
+    $ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        Revision = 4;
+        Object_Name = "Ethernet Link Object";
+        Object_Class_Code = 0xF6;
+        MaxInst = 3;
+        Number_Of_Static_Instances = 3;
+        Max_Number_Of_Dynamic_Instances = 0;
+        InterfaceLabel1 = "Port 1";
+        InterfaceLabel2 = "Port 2";
+        InterfaceLabel3 = "Internal Port 3";
+
