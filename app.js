@@ -133,6 +133,12 @@ const server = net.createServer((socket)=>{
       const encapsulatedData = header.parse(data);
       const {commandCode, statusCode} = encapsulatedData;
 
+      if(commandCode===0x65){
+        let registerSession = header.build(0x65,0x1234,[0x01,0x00,0x00,0x00]);
+        socket.write(registerSession);
+        console.log(registerSession);
+      }
+
       console.log(commandCode, statusCode);
     }
   })
