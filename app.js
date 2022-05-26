@@ -127,16 +127,24 @@ const {header} = require("st-ethernet-ip/src/enip/encapsulation");
 
 const server = net.createServer((socket)=>{
   console.log("connected");
-  socket.on("data", (data)=>{
-    console.log("data received: "+Buffer.isBuffer(data));
-    if(Buffer.isBuffer(data)){
-      const encapsulatedData = header.parse(data);
-      const {commandCode, statusCode} = encapsulatedData;
+  socket.on("data", (recv)=>{
+    console.log("data received: "+Buffer.isBuffer(recv));
+    if(Buffer.isBuffer(recv)){
+      const encapsulatedData = header.parse(recv);
+      const {commandCode, statusCode, data} = encapsulatedData;
 
       if(commandCode===0x65){
         let registerSession = header.build(0x65,0x1234,[0x01,0x00,0x00,0x00]);
         socket.write(registerSession);
         console.log(registerSession);
+      }
+      else if(commandCode===0x6F){
+        let commandSpecificData = {
+          Interface: 0x00000000,
+          Timeout: 0x0000,
+          ItemCount: 0x0000,
+        }
+        console.log(data);
       }
 
       console.log(commandCode, statusCode);
