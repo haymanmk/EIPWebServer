@@ -125,9 +125,9 @@ originator and target, where the originator initiates the command.
 
 # References
 
-1.  [COMMON INDUSTRIAL PROTOCOL (CIP™) AND THE FAMILY OF CIP NETWORKS](/manuals/CIP.pdf)
-2. [THE CIP NETWORKS LIBRARY, Volume 1, Common Industrial Protocol (CIP™)](/manuals/CIP Vol1_3.3.pdf) 
-3. [THE CIP NETWORKS LIBRARY, Volume 2, EtherNet/IP Adaptation of CIP](/manuals/CIP Vol2_1.4.pdf) - *Main Reference for EIP*
+1.  [COMMON INDUSTRIAL PROTOCOL (CIP™) AND THE FAMILY OF CIP NETWORKS]("/manuals/CIP.pdf")
+2. [THE CIP NETWORKS LIBRARY, Volume 1, Common Industrial Protocol (CIP™)]("/manuals/CIP Vol1_3.3.pdf") 
+3. [THE CIP NETWORKS LIBRARY, Volume 2, EtherNet/IP Adaptation of CIP]("/manuals/CIP Vol2_1.4.pdf") - *Main Reference for EIP*
 
 
 
