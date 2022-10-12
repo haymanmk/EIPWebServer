@@ -122,46 +122,103 @@
 // conn.on('disconnected', () => {
 //   console.log('Disconnected')
 // })
-const net = require("net");
-const {header} = require("st-ethernet-ip/src/enip/encapsulation");
+// const net = require("net");
+// const {header} = require("st-ethernet-ip/src/enip/encapsulation");
 
-const server = net.createServer((socket)=>{
-  console.log("connected");
-  socket.on("data", (recv)=>{
-    console.log("data received: "+Buffer.isBuffer(recv));
-    if(Buffer.isBuffer(recv)){
-      const encapsulatedData = header.parse(recv);
-      const {commandCode, statusCode, data} = encapsulatedData;
+// const server = net.createServer((socket)=>{
+//   console.log("connected");
+//   socket.on("data", (recv)=>{
+//     console.log("data received: "+Buffer.isBuffer(recv));
+//     if(Buffer.isBuffer(recv)){
+//       const encapsulatedData = header.parse(recv);
+//       const {commandCode, statusCode, data} = encapsulatedData;
 
-      if(commandCode===0x65){
-        let registerSession = header.build(0x65,0x1234,[0x01,0x00,0x00,0x00]);
-        socket.write(registerSession);
-        console.log(registerSession);
-      }
-      else if(commandCode===0x6F){
-        let commandSpecificData = {
-          Interface: 0x00000000,
-          Timeout: 0x0000,
-          ItemCount: 0x0000,
-        }
-        console.log(data);
-      }
+//       if(commandCode===0x65){
+//         let registerSession = header.build(0x65,0x1234,[0x01,0x00,0x00,0x00]);
+//         socket.write(registerSession);
+//         console.log(registerSession);
+//       }
+//       else if(commandCode===0x6F){
+//         let commandSpecificData = {
+//           Interface: 0x00000000,
+//           Timeout: 0x0000,
+//           ItemCount: 0x0000,
+//         }
+//         console.log(data);
+//       }
 
-      console.log(commandCode, statusCode);
+//       console.log(commandCode, statusCode);
+//     }
+//   })
+// });
+
+// server.listen(44818, ()=>{
+//   console.log('server bound');
+// });
+
+// server.on("connection", ()=>{
+//   console.log("client requests connetion");
+// });
+
+let str = "000000000004030000000000b2003c005402200624010af00000000055606800a7a16f01116297000200000050c30000084850c300000448010934040000000000000000200424002c652c6401801000000208aeac10000a0000000000000000"
+
+let buf = Buffer.from(str, 'hex')
+
+console.log(buf)
+
+function CIPDataParser(buf){
+  let parsedData = {
+    Interface: 0x00000000,
+    Timeout: 0x0000,
+    ItemCount: 0x0000,
+    Items: [], // Items are designed in this format, {TypeID, Length, Data in type of Object}.
+  }
+
+  const NetworkConnectionParameters = {
+    redundantOwner: 0, // 0/1
+    connectionType: 0, //00: null; 01: Multicast; 10: point-point; 11: reserved
+    priority: 0, //00: low; 01: high; 10: scheduled; 11:urgent;
+    fixed_variable: 0, //0: fixed; 1: variable;
+    connectionSize: 0x00, //in bytes
+  }
+
+  let O_T_NetworkConnectionParameters = NetworkConnectionParameters
+  let T_O_NetworkConnectionParameters = NetworkConnectionParameters
+
+
+  let forwardOpenRequestData = {
+    priority: 0x0,
+    timeTick: 0x0,
+    timeoutTicks: 0x00,
+    O_T_ConnectionID: 0x00000000,
+    T_O_ConnectionID: 0x00000000,
+    connectionSerialNumber: 0x0000,
+    originatorVendorID: 0x0000,
+    originatorSerialNumber: 0x00000000,
+    connectionTimeoutMultiplier: 0x00,
+    reserved: 0x000000,
+    O_T_RPI: 0x00000000,
+    O_T_NetworkConnectionParameters: O_T_NetworkConnectionParameters,
+    T_O_RPI: 0x00000000,
+    T_O_NetworkConnectionParameters: T_O_NetworkConnectionParameters,
+    transportType_Trigger: {
+      direction: 0, //0: client; 1: server;
+      trigger: 0, //0: cyclic; 1: change-of-state; 2: application object;
+      transportClass: 0, //class1-class3
+    },
+    connectionPathSize: 0x00, //in 2 bytes(1 word)
+    connectionPath: {
+      
     }
-  })
-});
+  }
 
-server.listen(44818, ()=>{
-  console.log('server bound');
-});
-
-server.on("connection", ()=>{
-  console.log("client requests connetion");
-});
-
-
-
+  let connecitonManagerData = {
+    Service: 0x00,
+    RequestPathSize: 0x00,
+    RequestPath: [], //in type of EPATH
+    Request_Data: forwardOpenRequestData,
+  }
+}
 
 
 // const {EthernetIP} = require("st-ethernet-ip");
