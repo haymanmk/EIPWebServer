@@ -103,7 +103,9 @@ originator and target, where the originator initiates the command.
 ![alt sendrrdata reply](/images/SendRRDataReply.png)
 
 
+
 ## Common Packet Format
+
 [ref.3-2-22] 
 ![alt common packet format](/images/CommonPacketFormat.png)
 ![alt common packet format typeid table1](/images/CommonPacketFormatTypeIDTable1.png)
@@ -111,9 +113,34 @@ originator and target, where the originator initiates the command.
 
 
 
+## Common Industrial Protocol
+
+[ref.3-p3-3] This chapter, Common Industrial Protocol (**CIP**), documents the encapsulation of the UCMM(vis TCP) and connected packets(via UDP).
+
+### CIP Packet over TCP/IP
+When the path of a CIP packet traverses an Ethernet-TCP/IP network, the encapsulated packet
+shall be transmitted using the TCP/IP protocol suite and the encapsulation protocol.
+
+#### Unconnected Messages
+![alt ucmm request](/images/UCMMRequest.png)
+
+![alt ucmm request](/images/UCMMReply.png)
+
+
+
+### Message Router Formats
+
+[ref.2-p2-10] **CIP** defines a standard data format for delivering data to and from the **Message Router object**. 
+
+![alt message router request](/images/MessageRouterRequestFormat.png)
+
+![alt message router request](/images/MessageRouterReplyFormat.png)
+
+
+
 ## Connection Manager Object Class	(Class Code: 0x06)
 
-[ref.3-p3-53] 
+[ref.2-p3-53] 
 
 
 
@@ -123,11 +150,21 @@ originator and target, where the originator initiates the command.
 
 
 
+### Object Specific Service Parameters
+
+For the detailed information about all the parameters, refer to [ref.2-p3-57].
+
+>  The **Forward_Open**, **Large_Forward_Open** and **Forward_Close** services shall be sent using the
+>  **UCMM** or an unbridged (local) explicit messaging connection only.
+>   
+> ![alt cip device object model](/images/CIPDeviceObjectModel.png)
+
+
 # References
 
 1.  [COMMON INDUSTRIAL PROTOCOL (CIP™) AND THE FAMILY OF CIP NETWORKS](/manuals/CIP.pdf)
-2. [THE CIP NETWORKS LIBRARY, Volume 1, Common Industrial Protocol (CIP™)](/manuals/CIP Vol1_3.3.pdf) 
-3. [THE CIP NETWORKS LIBRARY, Volume 2, EtherNet/IP Adaptation of CIP](/manuals/CIP Vol2_1.4.pdf) - *Main Reference for EIP*
+2.  [THE CIP NETWORKS LIBRARY, Volume 1, Common Industrial Protocol (CIP™)](/manuals/CIP%20Vol1_3.3.pdf) 
+3. [THE CIP NETWORKS LIBRARY, Volume 2, EtherNet/IP Adaptation of CIP](/manuals/CIP%20Vol2_1.4.pdf) - *Main Reference for EIP*
 
 
 
