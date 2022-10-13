@@ -3,6 +3,20 @@ Build a device to communicate with PLC or other device via EtherNet/IP and fetch
 
 
 
+
+
+
+
+## Ethernet/IP Library
+
+The [st-ethernet-ip](https://github.com/SerafinTech/ST-node-ethernet-ip) package is implemented. But this package does not support target side function. It means the host device where this program is running at can only be an originator role to send a request to target device and subscribe an Explicit or I/O messaging. On the contrary, when the peripheral device intends to request a subscribe, it will not work. According to this issue, the target side function is supposed to be developed to make MPU device as a role of target.
+
+
+
+
+
+ 
+
 ## Snapshot from WireShark
 
 The procedures to establish an implicit messaging between server and client devices are as shown below:
@@ -27,7 +41,15 @@ The session handle value is used to identify messages sent between two devices t
 
 
 
-*Forward Open* (CMD: 0x6F, )
+*Forward Open* (CMD: 0x6F, Class: 0x06, InstanceID: 0x01)
+
+To access **Forward open** service in Connection Manager Instance, **SendRRData** command is chosen, and pack the necessary information like *Type ID*(0xB2, UCCM), Object Instance *Service Code*(0x54, ForwardOpen) and *Path segments with required parameters.
+
+> *Path is composed of different segments each segment is encoded with different purpose which can be like specifying target class, instance ID, and attribute.
+
+
+
+
 
 
 
