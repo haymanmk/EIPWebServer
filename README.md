@@ -47,12 +47,18 @@ The Communication Object Classes are defined by describing:
 
 Each CIP connection is represented by a Connection Object (Class code 0x05).
 
+
+
 ### Creation of Communication Object
 
 The creation of this **communication object** resource can be done in one of two ways. 
 
 * Use of the **Create service** (Service code 0x08) for the **Connection Object**(Class code 0x05) [ref.2-p3-10]
 * Use of the **Forward Open service**(Service code 0x4E) for the **Connection Manager Object**(Class code 0x06) [ref.3-p3-53]
+
+
+
+
 
 
 
@@ -64,11 +70,19 @@ The total encapsulation messages length shall be limited to 65535 bytes. [ref.3-
 
 
 
+
+
+
+
 ## Command Code
 
 [ref.3-p2-5]
 
 ![alt command field](/images/EncapsulateCommandField.png)
+
+
+
+
 
 
 
@@ -79,6 +93,8 @@ The total encapsulation messages length shall be limited to 65535 bytes. [ref.3-
 ![alt registersession request](/images/RegisterSessionRequest.png)
 
 ![alt registersession reply](/images/RegisterSessionReply.png)
+
+
 
 ### Examples
 
@@ -93,6 +109,9 @@ The total encapsulation messages length shall be limited to 65535 bytes. [ref.3-
 ![alt reply](/images/RegisterSessionReplyScreenshot.png)
 
 
+
+
+
 ## SendRRData
 
 [ref.3-p2-17] A SendRRData command shall transfer an encapsulated request/reply packet between the
@@ -101,6 +120,10 @@ originator and target, where the originator initiates the command.
 ![alt sendrrdata request](/images/SendRRDataRequest.png)
 
 ![alt sendrrdata reply](/images/SendRRDataReply.png)
+
+
+
+
 
 
 
@@ -113,15 +136,25 @@ originator and target, where the originator initiates the command.
 
 
 
+
+
+
+
 ## Common Industrial Protocol
 
 [ref.3-p3-3] This chapter, Common Industrial Protocol (**CIP**), documents the encapsulation of the UCMM(vis TCP) and connected packets(via UDP).
 
+
+
 ### CIP Packet over TCP/IP
+
 When the path of a CIP packet traverses an Ethernet-TCP/IP network, the encapsulated packet
 shall be transmitted using the TCP/IP protocol suite and the encapsulation protocol.
 
+
+
 #### Unconnected Messages
+
 ![alt ucmm request](/images/UCMMRequest.png)
 
 ![alt ucmm request](/images/UCMMReply.png)
@@ -135,6 +168,60 @@ shall be transmitted using the TCP/IP protocol suite and the encapsulation proto
 ![alt message router request](/images/MessageRouterRequestFormat.png)
 
 ![alt message router request](/images/MessageRouterReplyFormat.png)
+
+
+
+### EPATH
+
+[ref.2-pc-7] In order to specify the relationship among different objects, a value used to specify this relationship is **PATH**. A path attributes consists of multiple segments and has a data type **EPATH**. And the encoding for each segments is described as below.
+
+* **Port segment** – used for routing from one subnet to another
+* **Logical segment** - logical reference information (such as class/instance/attribute IDs)
+* **Network segment** - specifies network parameters needed to transmit on a some networks
+* **Symbolic segment** - symbolic name
+* **Data segment** - embedded data (such as configuration data) 
+
+
+
+#### Path Attribute
+
+![alt example path attribute](/images/ExamplePathAttribute.png)
+
+
+
+#### Path Segment Structure
+
+![alt path segment structure](/images/PathSegmentStructure.png)
+
+> The meaning of the **Segment Format** bits is based on the specified **Segment Type**. 
+
+
+
+#### Logical Segment
+
+The logical segment selects a particular object address within a device (for example, Object
+Class, Object Instance, and Object Attribute). 
+
+![alt logical segment encoding](/images/LogicalSegmentEncoding.png)
+
+
+
+#### Example
+
+![alt example epath](/images/ExampleEPATH.png)
+
+
+
+
+> Why routing to Instance 1 which is an instance of connection manager class? I guess its a predefined value. For DeviceNet protocol, there is a predefined master/slave connection set. And it lists a series of predefined connection set in [ref.1-p44].
+>
+> ![alt predefined connection set](/images/PredefinedConnectionSetDeviceNet.png)
+
+
+
+
+
+
 
 
 
@@ -158,6 +245,11 @@ For the detailed information about all the parameters, refer to [ref.2-p3-57].
 >  **UCMM** or an unbridged (local) explicit messaging connection only.
 >   
 > ![alt cip device object model](/images/CIPDeviceObjectModel.png)
+
+
+
+
+
 
 
 # References
