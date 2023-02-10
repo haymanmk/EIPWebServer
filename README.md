@@ -1,31 +1,27 @@
 # EIPWebServer
-Build a device to communicate with PLC or other device via EtherNet/IP and fetch data from web server.
+Build a device to communicate with PLC or other device via EtherNet/IP and fetch data from web servers.
 
 
 
+## Introduction
 
-
-
-
-## Ethernet/IP Library
-
-The [st-ethernet-ip](https://github.com/SerafinTech/ST-node-ethernet-ip) package is implemented. But this package does not support target side function. It means the host device where this program is running at can only be an originator role to send a request to target device and subscribe an Explicit or I/O messaging. On the contrary, when the peripheral device intends to request a subscribe, it will not work. According to this issue, the target side function is supposed to be developed to make MPU device as a role of target.
-
-
-
-
+The [ethernet-ip](https://github.com/cmseaton42/node-ethernet-ip.git) is implemented here. But this package does not serve as the target, there are major two roles defined in EtherNet/IP, which are **Originator** and **Target**. **Originator** starts the request to create a connection with **Target**. In a nutshell, this module will bring up a request to build a connection with target instead of waiting for the request from other devices. When it comes to **implicit messaging** or so-called **I/O messaging**, it requires a few steps of hand shaking before a communication is created. And when the devices both serve as originators, then they might be unable to fulfill the connection request from others. Taking Keyence PLC for instance, it does not provide the function for users to configure PLC's EIP connection objects, so whenever it receives the requests, it will further respond a failure message to inform originators that it cannot find any connection objects in its configuration related to what originator aims to connect. According to this issue, we need to develop another layer of functions on top of **ethernet-ip** to make our host device as a target rather than just an originator.
 
  
 
-## Snapshot from WireShark
+## <a name="implicit_massaging"></a>Implicit Messaging
 
-The procedures to establish an implicit messaging between server and client devices are as shown below:
+Before we dive into talking about what can we do with EtherNet/IP and how to work with it, I want to show you the power of implicit communication. In general, when packets are transfered through TCP, each transfers will require an ACK response from the receiver to acknowledge it receives the data. By doing so, it provides a reliable communication but sacrifices the speed. On the other hand, when data is transfered via UDP, it no longer needs the ACK response which means the originator who send the packet will not wait for the response from the receiver, and it can continue on the next transfer. In addition, the header carried on UDP packet is restricted to 8 bytes long, unlike TCP which can vary from 20 bytes to 60 bytes, so UDP is more lightweight and faster than TCP is. Before you move into next topic, take a look at the following snapshot recorded by **Wireshark**, the packets labeled as **CIP I/O** are transfered via UDP and no ACK responses showing up in between each **CIP I/O** packets.
 
-* **Register Session**
+### Steps to Establish
 
-* **Forward Open**
+The main procedures to establish an implicit messaging between server and client are as shown below:
 
-* **Start Messaging**
+* [**Register Session**](#register_session)
+
+* [**Forward Open**](#forward_open)
+
+* [**Start Messaging**](#start_messaging)
 
   
 
@@ -33,23 +29,25 @@ The procedures to establish an implicit messaging between server and client devi
 
 
 
-*Register Session* (CMD: 0x65)
+### <a name="register_session"></a>Register Session (CMD: 0x65)
 
-The session handle value is used to identify messages sent between two devices that use this session. Client device send RegisterSession request to server, once master receives the request, then it further creates a Session Handle and returns in the RegisterSession reply.
+The **Session Handle** as shown in the encapsulation header is an identifier used to mark the packets sent between devices in the same session. Originator sends a **RegisterSession** command to target, once target receives the request, then it further creates a Session Handle and returns a **RegisterSession** reply back to Originator to indicate that it has registered a session for Originator.
 
 ![encapsulation packet structure](/images/EncapsulatePacketStructure.png)
 
 
 
-*Forward Open* (CMD: 0x6F, Class: 0x06, InstanceID: 0x01)
+### <a name="forward_open"></a>Forward Open (CMD: 0x6F, Class: 0x06, InstanceID: 0x01)
 
-To access **Forward open** service in Connection Manager Instance, **SendRRData** command is chosen, and pack the necessary information like *Type ID*(0xB2, UCCM), Object Instance *Service Code*(0x54, ForwardOpen) and *Path segments with required parameters.
+To access **Forward open** service in Connection Manager Instance, **SendRRData** command is chosen, and encapsulate the necessary information like *Type ID*(0xB2, UCCM), Object Instance *Service Code*(0x54, ForwardOpen) and *Path segments with required parameters as a payload.
 
-> *Path is composed of different segments each segment is encoded with different purpose which can be like specifying target class, instance ID, and attribute.
-
-
+> *Path is composed of different segments each segment is encoded with different purposes like specifying target class, instance ID, and attribute.
 
 
+
+### <a name="start_messaging"></a>Start Messaging
+
+After above steps all finished, ether target or originator will repeatedly send data every **RPI** microseconds via UDP. RPI is in short of **Requested Packet Interval** which is the requested time between packets in microseconds.
 
 
 
